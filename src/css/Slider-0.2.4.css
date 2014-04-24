@@ -1,0 +1,101 @@
+/* slider base styles */
+ .slider {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.slider.horizontal {
+    width: 210px;
+    height: 20px;
+}
+
+.slider.vertical {
+    width: 20px;
+    height: 210px;
+}
+
+.slider .track {
+    background-image: linear-gradient(to bottom, #F5F5F5 0%, #F9F9F9 100%);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    cursor: default;
+    position: absolute;
+}
+
+.slider .track .overlay {
+    
+}
+
+.slider .track .bar {
+    background: none repeat scroll 0 0 #BABABA;
+    border-radius: 4px;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+    position: absolute;
+}
+
+.slider .track .knob {
+    background-image: linear-gradient(to bottom, #149BDF 0%, #0480BE 100%);
+    background-repeat: repeat-x;
+    border: 0 solid rgba(0, 0, 0, 0);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    height: 20px;
+    opacity: 0.8;
+    position: absolute;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* slider track styles */
+ .slider.horizontal .track {
+    height: 10px;
+    width: 100%;
+    margin-top: -5px;
+    top: 50%;
+    left: 0;
+}
+
+.slider.vertical .track {
+    width: 10px;
+    height: 100%;
+    margin-left: -5px;
+    left: 50%;
+    top: 0;
+}
+
+/* slider overlay styles */
+.slider.horizontal .track .overlay {
+    
+}
+
+.slider.vertical .track .overlay {
+    
+}
+
+/* slider bar styles */
+ .slider.horizontal .track .bar {
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    width: 0;
+}
+
+.slider.vertical .track .bar {
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 0;
+}
+
+/* slider knob styles */
+ .slider.horizontal .track .knob {
+    margin-left: -10px;
+    margin-top: -5px;
+}
+
+.slider.vertical .track .knob {
+    margin-left: -5px;
+    margin-top: -10px;
+}
