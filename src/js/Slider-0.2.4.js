@@ -1,26 +1,21 @@
-/**
- * Slider.js - version 0.2.4 - 24/04/14
- * 
- * Copyright (c) 2014 Nathan Bishop
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+/*
+---
+description: A slider designed primarily for media use, that does not 
+depend on MooTools More.
+
+license: MIT-style
+
+authors:
+- Nathan Bishop
+
+requires:
+- core/1.4.5
+
+provides:
+- Slider
+
+...
+*/
 var Slider = new Class({
     Implements: [Events, Options],
     
@@ -35,10 +30,7 @@ var Slider = new Class({
     },
     
     /**
-     * Constructor
-     * 
-     * @constructs
-     * @param {object} Additional configuration options.
+     * @param {Object} Additional configuration options.
      */
     initialize: function (options) {
         this.setOptions(options);
@@ -55,10 +47,8 @@ var Slider = new Class({
     },
     
     /**
-     * Builds the slider manually. Elements can be accessd 
+     * @description Builds the slider manually. Elements can be accessd 
      * using the class property "elements".
-     * 
-     * @protected
      */
     build: function () {
         this.elements = {
@@ -81,11 +71,9 @@ var Slider = new Class({
     },
     
     /**
-     * Sets default positions, helper properties additional
+     * @description Sets default positions, helper properties additional
      * classes or anything else that might be needed. Essentially
      * a post-build method.
-     * 
-     * @protected
      */
     setup: function () {
         // some helper properties
@@ -124,33 +112,27 @@ var Slider = new Class({
     },
     
     /**
-     * Attaches the needed event handlers, enabling the 
+     * @summary Attaches the needed event handlers, enabling the 
      * slider for use.
-     * 
-     * @public
      */
     attach: function () {
         this.elements.knob.addEvent('mousedown', this.bound.start);
     },
     
     /**
-     * Detaches event handlers, preventing the slider from
+     * @summary Detaches event handlers, preventing the slider from
      * being used.
-     * 
-     * @public
      */
     detach: function () {
         this.elements.knob.removeEvent('mousedown', this.bound.start);
     },
     
     /**
-     * Defines the mouse limits and starting
-     * co-ordinates. Once this function is called
+     * @description Defines the mouse limits and starting
+     * co-ordinates. Once this function is called,
      * we are dragging.
      * 
-     * @event
-     * @protected
-     * @param {object} The mousedown event object.
+     * @param {Object} The mousedown event object.
      */
     start: function (e) {
         var track = this.elements.track,
@@ -179,11 +161,8 @@ var Slider = new Class({
     },
     
     /**
-     * Applies the limits and moves the knob.
-     * 
-     * @event
-     * @protected
-     * @param {object} The mousemove event object.
+     * @summary Applies the limits and moves the knob.
+     * @param {Object} The mousemove event object.
      */
     drag: function (e) {
         var step = this.getPosition(),    // knob position
@@ -204,11 +183,8 @@ var Slider = new Class({
     },
     
     /**
-     * Removes the events used for the drag operation.
-     * 
-     * @event
-     * @protected
-     * @param {object} The mouseup event object.
+     * @summary Removes the events used for the drag operation.
+     * @param {Object} The mouseup event object.
      */
     stop: function (e) {        
         document.removeEvent('mousemove', this.bound.drag);
@@ -219,11 +195,9 @@ var Slider = new Class({
     },
     
     /**
-     * When using the class in a reversed state, this
+     * @description When using the class in a reversed state, this
      * function switches the margins around. Applies
      * to 'margin-left' and 'margin-right' only.
-     * 
-     * @private
      */
     reverse: function () {
         var knob = this.elements.knob,
@@ -234,11 +208,9 @@ var Slider = new Class({
     },
     
     /**
-     * Sets the knob position in CSS pixels.
-     * 
-     * @public
-     * @param {number} A value defined in CSS pixels.
-     * @param {boolean} If true, prevents the 'onStep' event from firing.
+     * @summary Sets the knob's position.
+     * @param {Number} A value defined in CSS pixels.
+     * @param {Boolean} If true, prevents the 'onStep' event from firing.
      */
     setPosition: function (step, negate) {
         this.elements.knob.style[this.modifier[this.axis]] = step + 'px';
@@ -246,19 +218,17 @@ var Slider = new Class({
     },
     
     /**
-     * Retreives the knob position in CSS pixels.
-     * 
-     * @public
+     * @summary Retreives the knob's position.
+     * @return {Number} The position in CSS pixels.
      */
     getPosition: function () {
         return parseInt(this.elements.knob.style[this.modifier[this.axis]]);
     },
     
     /**
-     * Returns the slider as a HTML node when using
+     * @summary Returns the slider as a HTML node when using
      * the "$" function.
-     * 
-     * @public
+     * @return {Element} The div.slider as a complete string.
      */
     toElement: function () {
         return this.elements.slider;
